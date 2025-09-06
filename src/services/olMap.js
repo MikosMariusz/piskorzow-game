@@ -16,7 +16,7 @@ let _vectorLayer = null
 const DEFAULT_CENTER = fromLonLat([16.62, 50.69]) // okolice Piskorzowa / Pieszyc
 const DEFAULT_ZOOM = 12
 
-function makeDefaultStyle(opts = {}) {
+function makeDefaultStyle (opts = {}) {
   const {
     strokeColor = 'rgba(33,150,243,0.9)',
     fillColor = 'rgba(33,150,243,0.15)',
@@ -35,7 +35,7 @@ function makeDefaultStyle(opts = {}) {
   })
 }
 
-export function createMap(targetEl, options = {}) {
+export function createMap (targetEl, options = {}) {
   if (_map) {
     // jeśli mapa istnieje (singleton), tylko przypnij do nowego kontenera
     if (targetEl) {
@@ -72,18 +72,18 @@ export function createMap(targetEl, options = {}) {
   return _map
 }
 
-export function getMap() {
+export function getMap () {
   return _map
 }
 
-export function detach() {
+export function detach () {
   // Odczep render od DOM (np. przy zmianie routingu), ale zostaw instancję
   if (_map) {
     _map.setTarget(null)
   }
 }
 
-export function setTarget(targetEl) {
+export function setTarget (targetEl) {
   if (_map) {
     _map.setTarget(targetEl)
   } else {
@@ -91,13 +91,13 @@ export function setTarget(targetEl) {
   }
 }
 
-export function updateSize() {
+export function updateSize () {
   if (_map) {
     _map.updateSize()
   }
 }
 
-export function setView({ centerLonLat, zoom, duration = 300 }) {
+export function setView ({ centerLonLat, zoom, duration = 300 }) {
   if (!_map) {
     return
   }
@@ -110,7 +110,7 @@ export function setView({ centerLonLat, zoom, duration = 300 }) {
   }
 }
 
-export function addGeoJSON(geojson, { style = null } = {}) {
+export function addGeoJSON (geojson, { style = null } = {}) {
   if (!_vectorSource || !_map) {
     return []
   }
@@ -126,7 +126,7 @@ export function addGeoJSON(geojson, { style = null } = {}) {
   return features
 }
 
-export function addFeature(feature) {
+export function addFeature (feature) {
   if (!_vectorSource) {
     return null
   }
@@ -134,11 +134,11 @@ export function addFeature(feature) {
   return feature
 }
 
-export function clearFeatures() {
+export function clearFeatures () {
   _vectorSource?.clear()
 }
 
-export function fitToSource(padding = [48, 48, 48, 48], maxZoom = 17) {
+export function fitToSource (padding = [48, 48, 48, 48], maxZoom = 17) {
   if (!_map || !_vectorSource || _vectorSource.getFeatures().length === 0) {
     return
   }
@@ -146,7 +146,7 @@ export function fitToSource(padding = [48, 48, 48, 48], maxZoom = 17) {
   _map.getView().fit(extent, { padding, maxZoom, duration: 350 })
 }
 
-export function setVectorStyle(styleOptions = {}) {
+export function setVectorStyle (styleOptions = {}) {
   if (_vectorLayer) {
     _vectorLayer.setStyle(makeDefaultStyle(styleOptions))
   }
