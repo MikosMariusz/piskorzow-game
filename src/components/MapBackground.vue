@@ -12,7 +12,17 @@
 
 <script setup>
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { createMap, detach, setTarget, updateSize } from '@/services/olMap'
+import { useRoute } from 'vue-router'
+import {
+    createMap,
+    detach,
+    setTarget,
+    updateSize,
+    animateFilterChange,
+    enableDarkMode,
+    disableDarkMode,
+    getOSMDuration,
+} from '@/services/olMap'
 
 const props = defineProps({
     interactive: { type: Boolean, default: true },
@@ -21,20 +31,43 @@ const props = defineProps({
     zoom: { type: Number, default: 12 },
 })
 
+const route = useRoute()
 const mapEl = ref(null)
 let ro = null
+
+function shouldUseDarkFilter(routePath) {
+    return routePath === '/' || routePath === '/index'
+}
+
+function updateMapFilter(animate = true) {
+    const isDark = shouldUseDarkFilter(route.path)
+
+    if (animate) {
+        const targetFilter = isDark
+            ? 'brightness(0.7) contrast(1.2) saturate(0.8) hue-rotate(15deg)'
+            : 'none'
+
+        animateFilterChange(targetFilter, getOSMDuration())
+    } else {
+        if (isDark) {
+            enableDarkMode()
+        } else {
+            disableDarkMode()
+        }
+    }
+}
 
 onMounted(async () => {
     await nextTick()
     createMap(mapEl.value, {
-        center: undefined, // domyślne w serwisie (lub możesz przeliczyć tu fromLonLat)
+        center: undefined,
         zoom: props.zoom,
     })
 
-    // gwarantujemy poprawny rozmiar po pierwszym renderze
     updateSize()
 
-    // automatyczne aktualizacje rozmiaru
+    setTimeout(() => updateMapFilter(false), getOSMDuration())
+
     ro = new ResizeObserver(() => updateSize())
     ro.observe(mapEl.value)
 
@@ -44,15 +77,22 @@ onMounted(async () => {
 onBeforeUnmount(() => {
     if (ro) ro.disconnect()
     window.removeEventListener('resize', updateSize)
-    // odczep mapę od DOM, ale zachowaj instancję (szybkie re-mount między widokami)
     detach()
 })
 
-// Jeżeli chcesz dynamicznie przepinać target (np. keep-alive), uwzględniamy to:
 watch(
     () => mapEl.value,
     (el) => {
         if (el) setTarget(el)
+    },
+)
+
+watch(
+    () => route.path,
+    () => {
+        setTimeout(() => {
+            updateMapFilter()
+        }, 200)
     },
 )
 </script>
@@ -60,10 +100,9 @@ watch(
 <style scoped>
 .app-map-bg {
     position: fixed;
-    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    inset: 0;
     width: 100dvw;
     height: 100dvh;
-    /* Upewnij się, że nic nie przykrywa mapy tłem */
     background: transparent;
 }
 </style>
