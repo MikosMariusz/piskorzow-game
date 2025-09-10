@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>Gra Terenowa - Podstawy Programowania</title>
+        <link
+            rel="stylesheet"
+            href="style.css"
+        />
+    </head>
+    <body>
+        <!-- Tło aplikacji z efektem blur -->
+        <div class="background-container">
+            <img
+                src="images/app-background.png"
+                alt="Tło gry"
+                class="background-image"
+            />
+        </div>
+
+        <!-- Główna zawartość -->
+        <div class="container">
+            <!-- Nagłówek z logo -->
+            <header class="header">
+                <img
+                    src="images/gra_terenowa_logo.png"
+                    alt="Logo Gry Terenowej"
+                    class="logo"
+                />
+                <h1>Witaj w Grze Terenowej!</h1>
+            </header>
+
+            <!-- Główna sekcja z kartami -->
+            <main class="main-content">
+                <div class="card">
+                    <h2>O Grze</h2>
+                    <p>
+                        To jest przykład prostej strony internetowej utworzonej tylko za pomocą
+                        HTML, CSS i JavaScript.
+                    </p>
+                    <p>
+                        Nasza gra terenowa to interaktywna przygoda, która łączy prawdziwe miejsca z
+                        wirtualnymi wyzwaniami!
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h2>Jak to działa?</h2>
+                    <ul>
+                        <li>
+                            <strong>HTML</strong> - struktura strony (nagłówki, teksty, obrazki)
+                        </li>
+                        <li><strong>CSS</strong> - wygląd strony (kolory, rozmiary, efekty)</li>
+                        <li><strong>JavaScript</strong> - interakcje (kliknięcia, animacje)</li>
+                    </ul>
+                </div>
+
+                <!-- Przycisk otwierający dialog -->
+                <div class="button-container">
+                    <button
+                        id="openDialog"
+                        class="game-button"
+                    >
+                        🗺️ Rozpocznij Przygodę!
+                    </button>
+                </div>
+            </main>
+
+            <!-- Stopka -->
+            <footer class="footer">
+                <p>Przykład dla uczniów - Podstawy Programowania Stron</p>
+            </footer>
+        </div>
+
+        <!-- Dialog modal (ukryty na początku) -->
+        <div
+            id="modal"
+            class="modal"
+        >
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>🎮 Informacje o Grze</h2>
+                <img
+                    src="images/interaktywna_prezentacja.png"
+                    alt="Prezentacja"
+                    class="modal-image"
+                />
+                <p>Gratulacje! Właśnie nauczyłeś się:</p>
+                <ul>
+                    <li>Jak stworzyć strukturę HTML</li>
+                    <li>Jak ostylować elementy z CSS</li>
+                    <li>Jak dodać interakcje z JavaScript</li>
+                    <li>Jak używać efektów wizualnych (blur, animacje)</li>
+                </ul>
+                <button
+                    id="closeModal"
+                    class="game-button"
+                >
+                    Zamknij
+                </button>
+            </div>
+        </div>
+
+        <!-- Ładowanie JavaScript -->
+        <script src="service.js"></script>
+    </body>
+</html>
