@@ -12,6 +12,7 @@ declare module 'vue' {
     AppBarCopy: typeof import('./src/components/AppBarCopy.vue')['default']
     AppFooter: typeof import('./src/components/AppFooter.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    LangSwitcher: typeof import('./src/components/LangSwitcher.vue')['default']
     MapBackground: typeof import('./src/components/MapBackground.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
