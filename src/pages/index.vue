@@ -1,86 +1,28 @@
 <template>
     <div class="home-layer">
-        <v-container
-            class="pa-1 h-100"
-            fluid
-        >
-            <v-row
-                class="justify-center align-center tiles-wrapper h-100"
-                no-gutters
-            >
-                <v-col
+        <div class="tiles-container">
+            <div class="tiles-grid">
+                <RouterTile
                     v-for="tile in tiles"
                     :key="tile.id"
-                    cols="12"
-                    sm="6"
-                    md="6"
-                    lg="6"
-                    xl="4"
-                    class="d-flex justify-center align-center pa-0"
-                >
-                    <v-card
-                        class="glass-card tile-card position-relative"
-                        role="button"
-                        elevation="8"
-                        tabindex="0"
-                        rounded="lg"
-                        @click="go(tile.route)"
-                        @keyup.enter.space="go(tile.route)"
-                    >
-                        <div class="tile-content position-relative w-100 h-100">
-                            <!-- Obrazek w tle -->
-                            <v-img
-                                v-if="tile.image"
-                                :src="tile.image"
-                                :alt="tile.alt"
-                                cover
-                                height="100%"
-                                width="100%"
-                                class="position-absolute"
-                                style="top: 0; left: 0"
-                            />
-
-                            <!-- Tekst zastępczy (gdy brak obrazka) -->
-                            <div
-                                v-else
-                                class="h-100 w-100 d-flex align-center justify-center pa-2 text-center text-white font-weight-medium fallback-text"
-                            >
-                                {{ tile.fallbackText }}
-                            </div>
-
-                            <!-- Etykieta z tytułem -->
-                            <div
-                                class="position-absolute d-flex align-center justify-center"
-                                style="
-                                    top: 50%;
-                                    left: 50%;
-                                    transform: translate(-50%, -50%);
-                                    z-index: 2;
-                                "
-                            >
-                                <v-sheet
-                                    class="tile-label-sheet pa-2"
-                                    elevation="4"
-                                    rounded="lg"
-                                >
-                                    <p class="text-center tile-title font-weight-light ma-1">
-                                        {{ getTileTitle(tile) }}
-                                    </p>
-                                </v-sheet>
-                            </div>
-                        </div>
-                    </v-card>
-                </v-col>
-            </v-row>
-        </v-container>
+                    :config="tile"
+                    :title="getTileTitle(tile)"
+                    :disabled="tile.id === 'game' && !appStore.hasGpsAccess"
+                    @click="handleTileClick"
+                />
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { useAppStore } from '@/stores/app'
 import { useI18n } from 'vue-i18n'
+import RouterTile from '@/components/RouterTile.vue'
 
 const router = useRouter()
+const appStore = useAppStore()
 const { t } = useI18n()
 
 const tiles = [
@@ -102,16 +44,22 @@ const tiles = [
     },
 ]
 
-function go(path) {
-    router.push(path)
+function handleTileClick(tileConfig) {
+    if (tileConfig.id === 'game' && !appStore.hasGpsAccess) {
+        return
+    }
+    router.push(tileConfig.route)
 }
 
 function getTileTitle(tile) {
+    if (tile.id === 'game' && !appStore.hasGpsAccess) {
+        return t('terrainGameUnavailable')
+    }
     return t(tile.title)
 }
 </script>
 
-<style>
+<style scoped>
 .home-layer {
     position: fixed;
     inset: 0;
@@ -121,70 +69,104 @@ function getTileTitle(tile) {
     pointer-events: none;
     z-index: 1200;
     overflow: hidden;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+        env(safe-area-inset-left);
+    padding-top: calc(
+        64px + env(safe-area-inset-top)
+    ); /* Dodaj padding dla AppBar (64px to standardowa wysokość v-app-bar) */
 }
 
-.tile-card {
-    pointer-events: auto;
+.tiles-container {
     width: 100%;
-    max-width: 450px;
-    aspect-ratio: 1;
-    overflow: hidden;
-    transition:
-        transform 0.25s,
-        box-shadow 0.25s,
-        background 0.25s;
-    margin: 0.25rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.08) !important;
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+.tiles-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    max-width: 100%;
+    width: 100%;
+    max-width: 1200px; /* maksymalna szerokość całego kontenera */
+    justify-items: center;
 }
 
-.tile-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6);
-}
-
-.tile-label-sheet {
-    background: rgba(255, 255, 255, 0.2) !important;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    max-width: 90%;
-}
-
-.tile-title {
-    font-size: clamp(0.9rem, 3.5vw, 1.5rem);
-    line-height: 1.2;
-    text-align: center;
-}
-
-/* Telefon pionowo */
+/* Responsywność dla różnych rozmiarów ekranów */
 @media (max-width: 599px) {
-    .tile-card {
-        max-width: min(85vw, 320px);
-        min-height: min(85vw, 320px);
+    .home-layer {
+        padding-top: calc(
+            64px + env(safe-area-inset-top) + 10px
+        ); /* Dodatkowe 10px marginesu na mobile */
     }
 
-    .tile-title {
-        font-size: clamp(0.8rem, 4vw, 1.1rem) !important;
+    .tiles-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .tiles-container {
+        padding: 15px;
     }
 }
 
-/* Tablet */
 @media (min-width: 600px) and (max-width: 959px) {
-    .tile-card {
-        max-width: min(42vw, 280px);
-        min-height: min(42vw, 280px);
+    .tiles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 700px;
+    }
+
+    .tiles-container {
+        padding: 20px;
     }
 }
 
-/* Desktop */
+@media (min-width: 960px) and (max-width: 1279px) {
+    .tiles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 800px;
+    }
+
+    .tiles-container {
+        padding: 25px;
+    }
+}
+
 @media (min-width: 1280px) {
-    .tile-card {
-        max-width: min(35vw, 450px);
-        min-height: min(35vw, 450px);
+    .tiles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 900px;
+    }
+
+    .tiles-container {
+        padding: 30px;
+    }
+}
+
+/* Dla bardzo dużych ekranów - możemy pokazać 3 kafelki, jeśli jest więcej */
+@media (min-width: 1600px) {
+    .tiles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        max-width: 1200px;
+    }
+}
+
+/* Orientacja landscape na mobilnych */
+@media (max-width: 959px) and (orientation: landscape) and (max-height: 600px) {
+    .tiles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .tiles-container {
+        padding: 10px;
     }
 }
 </style>
