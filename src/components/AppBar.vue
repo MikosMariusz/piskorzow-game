@@ -19,11 +19,15 @@
         <v-toolbar-title>{{ $t('gameTitle') }}</v-toolbar-title>
 
         <v-spacer></v-spacer>
+
+        <LangSwitcher class="mr-4" />
     </v-app-bar>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useAppStore } from '@/stores/app'
+import LangSwitcher from './LangSwitcher.vue'
 
 const bg = new URL('../assets/images/bar-background.png', import.meta.url).href
 const appStore = useAppStore()
