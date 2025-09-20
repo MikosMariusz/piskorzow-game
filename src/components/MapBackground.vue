@@ -2,12 +2,17 @@
     <div
         ref="mapContainer"
         class="app-map-bg"
-    ></div>
+    >
+        <MapZoomControls />
+        <MapGpsControls />
+    </div>
 </template>
 
 <script setup>
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import { createMap } from '../services/olMap' // importujemy funkcję tworzącą mapę
+import MapZoomControls from './MapZoomControls.vue'
+import MapGpsControls from './MapGpsControls.vue'
 
 const mapContainer = ref(null) // referencja do kontenera mapy
 let mapInstance = null // zmienna do przechowywania instancji mapy
