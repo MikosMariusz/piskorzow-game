@@ -20,6 +20,13 @@
 
         <v-spacer></v-spacer>
 
+        <GameButton
+            icon="mdi-information"
+            :title="$t('info')"
+            :label="$t('info')"
+            :height="50"
+            :action="() => showAlert('test')"
+        />
         <LangSwitcher class="mr-4" />
     </v-app-bar>
 </template>
@@ -28,6 +35,7 @@
 import { computed } from 'vue'
 import { useAppStore } from '@/stores/app'
 import LangSwitcher from './LangSwitcher.vue'
+import GameButton from './GameButton.vue'
 
 const bg = new URL('../assets/images/bar-background.png', import.meta.url).href
 const appStore = useAppStore()
@@ -35,6 +43,9 @@ const appStore = useAppStore()
 const darkGradient = 'to top right, rgba(34,34,34,0.8), rgba(60,60,60,0.7)'
 const osmGradient =
     '90deg, rgba(182,227,182,0.7) 0%, rgba(120,200,120,0.7) 50%, rgba(163,193,218,0.5) 100%'
+const showAlert = (msg) => {
+    alert(msg)
+}
 
 const opacity = computed(() => (appStore.isDarkEnabled ? 1 : 0))
 </script>

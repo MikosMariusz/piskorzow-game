@@ -11,10 +11,15 @@ declare module 'vue' {
     AppBar: typeof import('./src/components/AppBar.vue')['default']
     AppBarCopy: typeof import('./src/components/AppBarCopy.vue')['default']
     AppFooter: typeof import('./src/components/AppFooter.vue')['default']
+    GameButton: typeof import('./src/components/GameButton.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     LangSwitcher: typeof import('./src/components/LangSwitcher.vue')['default']
     MapBackground: typeof import('./src/components/MapBackground.vue')['default']
+    MapGpsControls: typeof import('./src/components/MapGpsControls.vue')['default']
+    MapZoomControls: typeof import('./src/components/MapZoomControls.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
+    RouterTile: typeof import('./src/components/RouterTile.vue')['default']
+    RouterTileCopy: typeof import('./src/components/RouterTileCopy.vue')['default']
     RouterView: typeof import('vue-router')['RouterView']
   }
 }
