@@ -10,9 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppBar: typeof import('./src/components/AppBar.vue')['default']
     AppBarCopy: typeof import('./src/components/AppBarCopy.vue')['default']
-    AppFooter: typeof import('./src/components/AppFooter.vue')['default']
     GameButton: typeof import('./src/components/GameButton.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     LangSwitcher: typeof import('./src/components/LangSwitcher.vue')['default']
     MapBackground: typeof import('./src/components/MapBackground.vue')['default']
     MapGpsControls: typeof import('./src/components/MapGpsControls.vue')['default']
