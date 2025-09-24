@@ -5,12 +5,10 @@
         rounded="sm"
     >
         <v-card-text class="zoom-buttons pa-0">
-            <v-btn
-                variant="text"
-                size="small"
-                density="compact"
+            <GameButton
                 icon="mdi-plus"
-                @click="handleZoomIn"
+                color="''"
+                :action="handleZoomIn"
                 :disabled="isMaxZoom"
                 :aria-label="'Przybliż mapę'"
                 class="zoom-button"
@@ -18,13 +16,10 @@
 
             <v-divider />
 
-            <v-btn
-                variant="elevated"
-                color="primary"
-                size="small"
-                density="compact"
+            <GameButton
                 icon="mdi-minus"
-                @click="handleZoomOut"
+                color="''"
+                :action="handleZoomOut"
                 :disabled="isMinZoom"
                 :aria-label="'Oddal mapę'"
                 class="zoom-button"
@@ -42,7 +37,10 @@ import {
     setZoomCallback,
     clearZoomCallback,
 } from '@/services/olMap'
+import { useI18n } from 'vue-i18n'
+import GameButton from './GameButton.vue'
 
+const { t } = useI18n()
 const currentZoom = ref(12)
 const minZoom = 1
 const maxZoom = 20

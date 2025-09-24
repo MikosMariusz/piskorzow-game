@@ -6,9 +6,8 @@
         rounded="lg"
         @click="action"
         :title="$t(title)"
-        class="mr-2"
         elevation="2"
-        color="primary"
+        :color="color"
         :height="height"
     >
         <v-icon
@@ -20,19 +19,31 @@
     </v-btn>
 </template>
 
-<script lang="ts" setup>
-const props = withDefaults(
-    defineProps<{
-        color?: string
-        icon?: string
-        title: string
-        label?: string
-        height?: number | string
-        action: () => void
-    }>(),
-    {
-        color: 'primary',
-        height: '40',
+<script setup>
+const props = defineProps({
+    color: {
+        type: String,
+        default: 'primary',
     },
-)
+    icon: {
+        type: String,
+        default: '',
+    },
+    title: {
+        type: String,
+        default: '',
+    },
+    label: {
+        type: String,
+        default: '',
+    },
+    height: {
+        type: [Number, String],
+        default: '40',
+    },
+    action: {
+        type: Function,
+        default: () => {},
+    },
+})
 </script>

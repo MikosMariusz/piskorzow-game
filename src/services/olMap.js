@@ -31,22 +31,6 @@ const startView = {
     duration: 1000,
 }
 
-export const setInitialViewForPage = () => {
-    // if (!_map) return
-    // // Przerwij animację lotu jeśli aktywna
-    // stopFlightAnimation()
-    // // Sprawdź rozmiar ekranu (mobile: szerokość < 960px - zgodnie z Vuetify breakpoint)
-    // const isMobile = window.innerWidth < 960
-    // const center = isMobile ? startView.mobileCenter : startView.desktopCenter
-    // const zoom = startView.zoom
-    // const view = _map.getView()
-    // view.animate({
-    //     center: fromLonLat(center),
-    //     zoom,
-    //     duration: 600,
-    // })
-}
-
 export const getOSMDuration = () => OSM_COLOR_ANIMATION_DURATION
 
 const generateFlightPoints = (center, count = 10) => {
