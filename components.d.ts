@@ -8,16 +8,28 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AppBackground: typeof import('./src/components/AppBackground.vue')['default']
     AppBar: typeof import('./src/components/AppBar.vue')['default']
-    AppBarCopy: typeof import('./src/components/AppBarCopy.vue')['default']
+    AppCard: typeof import('./src/components/AppCard.vue')['default']
+    CardWrapper: typeof import('./src/components/CardWrapper.vue')['default']
     GameButton: typeof import('./src/components/GameButton.vue')['default']
+    GameDialog: typeof import('./src/components/GameDialog.vue')['default']
+    GameGpsUnavailableCard: typeof import('./src/components/GameGpsUnavailableCard.vue')['default']
+    GameStaticContent: typeof import('./src/components/GameStaticContent.vue')['default']
+    GameStep: typeof import('./src/components/GameStep.vue')['default']
+    GameStoriesCard: typeof import('./src/components/GameStoriesCard.vue')['default']
+    GameStoryView: typeof import('./src/components/GameStoryView.vue')['default']
+    GameTask: typeof import('./src/components/GameTask.vue')['default']
     LangSwitcher: typeof import('./src/components/LangSwitcher.vue')['default']
+    LoadingOverlay: typeof import('./src/components/LoadingOverlay.vue')['default']
+    MapAttributions: typeof import('./src/components/MapAttributions.vue')['default']
     MapBackground: typeof import('./src/components/MapBackground.vue')['default']
     MapGpsControls: typeof import('./src/components/MapGpsControls.vue')['default']
     MapZoomControls: typeof import('./src/components/MapZoomControls.vue')['default']
+    ProjectInfoContent: typeof import('./src/components/ProjectInfoContent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterTile: typeof import('./src/components/RouterTile.vue')['default']
-    RouterTileCopy: typeof import('./src/components/RouterTileCopy.vue')['default']
     RouterView: typeof import('vue-router')['RouterView']
+    TaskSection: typeof import('./src/components/TaskSection.vue')['default']
   }
 }

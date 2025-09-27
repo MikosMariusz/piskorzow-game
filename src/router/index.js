@@ -1,28 +1,46 @@
-/**
- * router/index.ts
- *
- * Automatic routes for `./src/pages/*.vue`
- */
-
 import { setupLayouts } from 'virtual:generated-layouts'
-// Composables
 import { createRouter, createWebHistory } from 'vue-router'
 import { routes } from 'vue-router/auto-routes'
 import { useAppStore } from '@/stores/app'
 
+const routesWithStories = [
+    ...setupLayouts(routes),
+    {
+        path: '/game/:storyId',
+        name: 'game-story',
+        component: () => import('@/components/GameStoryView.vue'),
+    },
+    {
+        path: '/presentation/:storyId',
+        name: 'presentation-story',
+        component: () => import('@/components/GameStoryView.vue'),
+    },
+]
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes: setupLayouts(routes),
+    routes: routesWithStories,
 })
 
-// Global before guard - aktualizuj dark mode przed każdą nawigacją
 router.beforeEach((to, from, next) => {
     const appStore = useAppStore()
-    appStore.updateDarkModeFromRoute(to.path)
+    appStore.updateHomePageFromRoute(to.path)
+    if (
+        to.path === '/' ||
+        to.path === '/index' ||
+        (to.path === '/game' && !appStore.hasGpsAccess)
+    ) {
+        appStore.closeWindow()
+    } else if (
+        (to.path.startsWith('/game/') && appStore.hasGpsAccess) ||
+        to.path.startsWith('/presentation/')
+    ) {
+        appStore.setGameCardVisible(true)
+    }
+
     next()
 })
 
-// Workaround for https://github.com/vitejs/vite/issues/11804
 router.onError((err, to) => {
     if (err?.message?.includes?.('Failed to fetch dynamically imported module')) {
         if (localStorage.getItem('vuetify:dynamic-reload')) {

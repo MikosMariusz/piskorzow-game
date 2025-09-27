@@ -3,19 +3,24 @@
         :icon="icon && !label ? true : false"
         variant="elevated"
         size="small"
-        rounded="lg"
+        rounded="sm"
         @click="action"
-        :title="$t(title)"
+        :title="title.length ? $t(title) : undefined"
         elevation="2"
         :color="color"
         :height="height"
     >
         <v-icon
-            v-if="icon"
+            v-if="icon && !right"
             :icon="icon"
             :class="label ? 'mr-2' : ''"
         ></v-icon>
         <span v-if="label">{{ $t(label) }}</span>
+        <v-icon
+            v-if="icon && right"
+            :icon="icon"
+            :class="label ? 'ml-2' : ''"
+        ></v-icon>
     </v-btn>
 </template>
 
@@ -40,6 +45,10 @@ const props = defineProps({
     height: {
         type: [Number, String],
         default: '40',
+    },
+    right: {
+        type: Boolean,
+        default: false,
     },
     action: {
         type: Function,

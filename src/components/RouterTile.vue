@@ -29,16 +29,16 @@
                 />
                 <div
                     v-else
-                    class="h-100 w-100 d-flex align-center justify-center pa-2 text-center font-weight-light fallback-text"
+                    class="h-100 w-100 d-flex align-center justify-center pa-2 text-center text-white font-weight-medium fallback-text"
                 >
-                    {{ t(config.fallbackText) }}
+                    {{ config.fallbackText }}
                 </div>
                 <div
-                    class="position-absolute d-flex align-center justify-center"
-                    style="bottom: 10px; left: 10px; right: 10px; transform: none; z-index: 2"
+                    class="position-absolute d-flex align-center justify-center w-90"
+                    style="left: 10px; right: 10px; bottom: 10px; z-index: 2"
                 >
                     <v-sheet
-                        class="tile-label-sheet pa-2 w-100"
+                        class="tile-label-sheet pa-2"
                         elevation="4"
                         rounded="lg"
                     >
@@ -58,15 +58,6 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
-
-onMounted(() => {
-    console.log('RouterTile mounted', props)
-})
-
 const props = defineProps({
     config: {
         type: Object,
@@ -155,9 +146,8 @@ const handleClick = () => {
 .tile-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow:
-        0 12px 30px -6px rgba(0, 0, 0, 0.4),
-        0 4px 12px -2px rgba(0, 0, 0, 0.2);
-    transition: all 0.5s ease-in-out;
+        0 20px 50px -10px rgba(0, 0, 0, 0.6),
+        0 8px 20px -4px rgba(0, 0, 0, 0.4);
 }
 
 .glass-card {
@@ -179,10 +169,9 @@ const handleClick = () => {
     cursor: not-allowed !important;
 }
 
-/* Responsywność dla różnych rozmiarów ekranów */
 @media (max-width: 599px) {
     .tile-wrapper {
-        max-width: min(85vw, 320px);
+        max-width: min(70vw, 320px);
     }
 
     .tile-title {
@@ -252,7 +241,6 @@ const handleClick = () => {
     }
 }
 
-/* Orientacja landscape na mobilnych */
 @media (max-width: 959px) and (orientation: landscape) and (max-height: 600px) {
     .tile-wrapper {
         max-width: min(40vh, 250px);

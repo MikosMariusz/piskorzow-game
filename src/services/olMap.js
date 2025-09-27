@@ -6,7 +6,9 @@ import { fromLonLat, toLonLat } from 'ol/proj'
 import XYZ from 'ol/source/XYZ'
 import View from 'ol/View'
 import { GeoJSON } from 'ol/format'
-import { Style, Stroke, Fill } from 'ol/style'
+import { Style, Stroke, Fill, Icon } from 'ol/style'
+import { Circle as CircleGeom, Point } from 'ol/geom'
+import Feature from 'ol/Feature'
 import { useAppStore } from '@/stores/app'
 
 let _map = null
@@ -343,23 +345,57 @@ const addGeometryToMap = (geometry, locationName, properties = {}) => {
 
     _vectorLayer.getSource().clear()
 
-    const feature = {
-        type: 'Feature',
-        geometry: geometry,
-        properties: {
-            name: locationName,
-            ...properties,
-        },
-    }
+    let newFeatures = []
 
-    const geojsonObject = {
-        type: 'FeatureCollection',
-        features: [feature],
-    }
+    if (geometry.type === 'Point') {
+        const center = fromLonLat(geometry.coordinates)
+        if (properties.radius) {
+            const radius = properties.radius
+            const circleGeom = new CircleGeom(center, radius)
+            const olFeature = new Feature(circleGeom)
+            olFeature.setProperties({
+                name: locationName,
+                ...properties,
+            })
+            newFeatures = [olFeature]
+        } else {
+            const olFeature = new Feature({ geometry: new Point(center) })
+            olFeature.setProperties({
+                name: locationName,
+                ...properties,
+            })
+            olFeature.setStyle(
+                new Style({
+                    image: new Icon({
+                        anchor: [0.5, 1],
+                        anchorXUnits: 'fraction',
+                        anchorYUnits: 'fraction',
+                        src: '/images/pointer.png',
+                        scale: 1,
+                    }),
+                }),
+            )
+            newFeatures = [olFeature]
+        }
+    } else {
+        const feature = {
+            type: 'Feature',
+            geometry: geometry,
+            properties: {
+                name: locationName,
+                ...properties,
+            },
+        }
 
-    const newFeatures = new GeoJSON().readFeatures(geojsonObject, {
-        featureProjection: 'EPSG:3857',
-    })
+        const geojsonObject = {
+            type: 'FeatureCollection',
+            features: [feature],
+        }
+
+        newFeatures = new GeoJSON().readFeatures(geojsonObject, {
+            featureProjection: 'EPSG:3857',
+        })
+    }
 
     _vectorLayer.getSource().addFeatures(newFeatures)
 }
@@ -568,7 +604,7 @@ export const animateToMode = (opts = {}) => {
     requestAnimationFrame(animateOpacity)
 }
 
-export const setStoryView = ({ feature, view = startView, sidebarWidthPx = 500 }) => {
+export const setStoryView = ({ features, feature, view = startView, sidebarWidthPx = 500 }) => {
     if (_isFlying) {
         stopFlightAnimation()
     }
@@ -592,6 +628,17 @@ export const setStoryView = ({ feature, view = startView, sidebarWidthPx = 500 }
                 feature.properties?.name || 'Obszar',
                 feature.properties,
             )
+        }
+        if (features && Array.isArray(features)) {
+            features.forEach((feat) => {
+                if (feat && feat.geometry) {
+                    addGeometryToMap(
+                        feat.geometry,
+                        feat.properties?.name || 'Obszar',
+                        feat.properties,
+                    )
+                }
+            })
         }
     }, 200)
 }
