@@ -9,12 +9,19 @@ let _heading = null
 let _bearingToTarget = null
 let _directionCallback = null
 let _headingListener = null
+let _gpsWatchId = null
+let _gpsLayer = null
+let _gpsPositionCallback = null
+let _currentPosition = null
+let _positionUpdateCallback = null
+let _simulationInterval = null
+let _simulateGPS = true
 
 export const setDirectionCallback = (cb) => {
     _directionCallback = cb
 }
 
-function calculateBearing(from, to) {
+export const calculateBearing = (from, to) => {
     const toRad = (deg) => (deg * Math.PI) / 180
     const toDeg = (rad) => (rad * 180) / Math.PI
 
@@ -68,14 +75,6 @@ export const stopHeadingTracking = () => {
     _bearingToTarget = null
     _directionCallback = null
 }
-
-let _gpsWatchId = null
-let _gpsLayer = null
-let _gpsPositionCallback = null
-let _currentPosition = null
-let _positionUpdateCallback = null
-let _simulationInterval = null
-let _simulateGPS = false
 
 export const checkGpsAccessAndAccuracy = async () => {
     const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)
