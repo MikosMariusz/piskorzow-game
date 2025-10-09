@@ -1,0 +1,216 @@
+{
+    "title": "testScenario",
+    "description": "storyScenarioDescription",
+    "steps": [
+        {
+            "title": "storyTwo.intro",
+            "bgImage": {
+                "src": "taskImageOne.png"
+            },
+            "header": "storyTwo.introHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyTwo.introParagraphOne"
+                },
+                {
+                    "type": "p",
+                    "text": "storyTwo.introParagraphTwo"
+                }
+            ],
+            "view": {
+                "center": [16.5639963, 50.7323179],
+                "zoom": 17,
+                "duration": 2000
+            }
+        },
+        {
+            "title": "storyTwo.taskOne",
+            "bgImage": {
+                "src": "taskOneImage.png",
+                "alt": "storyTwo.taskOneImageAlt",
+                "blur": true
+            },
+            "header": "storyTwo.taskOneHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyTwo.taskOneParagraphOne"
+                },
+                {
+                    "type": "image",
+                    "src": "taskImageTwo.png",
+                    "alt": "storyTwo.taskImageTwoAlt"
+                }
+            ],
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.5637181, 50.7308779]
+                    },
+                    "properties": {}
+                }
+            ],
+            "view": {
+                "center": [16.5637352, 50.7307916],
+                "zoom": 15,
+                "duration": 2000
+            },
+            "task": {
+                "question": "storyTwo.taskOneQuestion",
+                "image": {
+                    "src": "taskImageTwo.png",
+                    "alt": "storyTwo.taskImageOneAlt"
+                },
+                "tip": "storyTwo.taskOneTip"
+            },
+            "position": [16.5637352, 50.7307916],
+            "accuracy": 20
+        },
+        {
+            "title": "storyTwo.taskTwo",
+            "bgImage": {
+                "src": "taskOneImage.png",
+                "blur": true
+            },
+            "header": "storyTwo.taskTwoHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyTwo.taskTwoParagraphOne"
+                }
+            ],
+            "task": {
+                "question": "storyTwo.taskTwoQuestion",
+                "answers": ["Radunia"],
+                "image": {
+                    "src": "imageFour.png",
+                    "alt": "storyTwo.taskTwoImageAlt"
+                },
+                "tip": "storyTwo.taskTwoTip"
+            },
+            "view": {
+                "center": [16.564899, 50.7328209],
+                "zoom": 17,
+                "duration": 2000
+            },
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.564899, 50.7328209]
+                    },
+                    "properties": {
+                        "radius": 5
+                    }
+                }
+            ],
+            "position": [16.564899, 50.7328209],
+            "accuracy": 20
+        },
+        {
+            "title": "storyTwo.taskThree",
+            "bgImage": {
+                "src": "taskImageOne.png"
+            },
+            "header": "storyTwo.taskThreeHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyTwo.taskThreeParagraphOne"
+                }
+            ],
+            "task": {
+                "question": "storyTwo.taskThreeQuestion",
+                "image": {
+                    "src": "imageTwo.png",
+                    "alt": "storyTwo.taskThreeImageAlt"
+                },
+                "tip": "storyTwo.taskThreeTip"
+            },
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.5632315, 50.7318578]
+                    },
+                    "properties": {
+                        "radius": 5
+                    }
+                }
+            ],
+            "position": [16.5632315, 50.7318578],
+            "accuracy": 20
+        },
+        {
+            "title": "storyTwo.taskFour",
+            "bgImage": {
+                "src": "taskImageOne.png"
+            },
+            "header": "storyTwo.taskFourHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyTwo.taskThreeParagraphOne"
+                }
+            ],
+            "task": {
+                "question": "storyTwo.taskFourQuestion",
+                "answers": [
+                    "Dożynki Piskorzów",
+                    "dożynki piskorzów",
+                    "dozynki piskorzow",
+                    "dozynki Piskorzow",
+                    "Dożynki piskorzow",
+                    "dożynki Piskorzów"
+                ],
+                "image": {
+                    "src": "imageFive.png",
+                    "alt": "storyTwo.taskFourImageAlt"
+                },
+                "tip": "storyTwo.taskFourTip"
+            },
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.5637337, 50.7328456]
+                    },
+                    "properties": {
+                        "radius": 5
+                    }
+                }
+            ],
+            "position": [16.5637337, 50.7328456],
+            "accuracy": 20
+        },
+        {
+            "title": "storyTwo.ending",
+            "bgImage": {
+                "src": "taskImageOne.png"
+            },
+            "header": "storyTwo.endingHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyTwo.endingParagraphOne"
+                },
+                {
+                    "type": "image",
+                    "src": "imageThree.png"
+                }
+            ]
+        }
+    ]
+}

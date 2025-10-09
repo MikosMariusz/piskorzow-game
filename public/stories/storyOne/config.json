@@ -1,0 +1,533 @@
+{
+    "title": "testScenario",
+    "description": "storyScenarioDescription",
+    "steps": [
+        {
+            "title": "storyOne.intro",
+            "bgImage": {
+                "src": "image_1.png",
+                "blur": true
+            },
+            "header": "storyOne.introHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyOne.introParagraphOne"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.introParagraphTwo"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.introParagraphThree"
+                }
+            ],
+            "view": {
+                "center": [16.5671435, 50.7377331],
+                "zoom": 14,
+                "duration": 1000
+            },
+            "feature": {
+                "defaultFeature": true
+            }
+        },
+        {
+            "title": "storyOne.instructions",
+            "bgImage": {
+                "src": "image_3.png"
+            },
+            "header": "storyOne.instructionHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyOne.instructionParagraphOne"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.instructionParagraphTwo"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.instructionParagraphThree"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.instructionParagraphFour"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.instructionParagraphFive"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.instructionParagraphSix"
+                }
+            ],
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.5632472, 50.7318678]
+                    },
+                    "properties": {}
+                }
+            ],
+            "view": {
+                "center": [16.5632472, 50.7318678],
+                "zoom": 15,
+                "duration": 1000
+            },
+            "task": {
+                "question": "storyOne.instructionQuestion",
+                "tip": "storyOne.instructionTip",
+                "answers": ["Zrozumiałem", "I understood"]
+            }
+        },
+        {
+            "title": "storyOne.taskOneInfo",
+            "bgImage": {
+                "src": "image_2.png"
+            },
+            "header": "storyOne.taskOneInfoHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyOne.taskOneInfoParagraphOne"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskOneInfoParagraphTwo"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskOneInfoParagraphThree"
+                }
+            ],
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.56082431, 50.7329349]
+                    },
+                    "properties": {}
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.56082431, 50.7329349]
+                    },
+                    "properties": {
+                        "radius": 100
+                    }
+                }
+            ],
+            "view": {
+                "center": [16.56082431, 50.7329349],
+                "zoom": 18,
+                "duration": 1000
+            },
+            "task": {
+                "question": "storyOne.taskOneQuestion",
+                "tip": "storyOne.taskOneTip",
+                "answers": ["Kłomnica", "Klomnica"]
+            },
+            "position": [16.56082431, 50.7329349],
+            "accuracy": 20
+        },
+        {
+            "title": "storyOne.taskTwoInfo",
+            "bgImage": {
+                "src": "image_2.png"
+            },
+            "header": "storyOne.taskTwoInfoHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyOne.taskTwoInfoParagraphOne"
+                },
+                {
+                    "type": "images",
+                    "list": [
+                        {
+                            "src": "photo_1.png",
+                            "alt": "storyOne.taskTwoInfoImageAlt"
+                        },
+                        {
+                            "src": "photo_2.png",
+                            "alt": "storyOne.taskTwoInfoImageAlt"
+                        }
+                    ]
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskTwoInfoParagraphTwo"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskTwoInfoParagraphThree"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskTwoInfoParagraphFour"
+                }
+            ],
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.5607509, 50.7332436]
+                    },
+                    "properties": {}
+                }
+            ],
+            "view": {
+                "center": [16.5607509, 50.7332436],
+                "zoom": 18,
+                "duration": 1000
+            },
+            "position": [16.56082431, 50.7329349],
+            "accuracy": 20
+        },
+        {
+            "title": "storyOne.taskThreeInfo",
+            "bgImage": {
+                "src": "image_5.png"
+            },
+            "header": "storyOne.taskThreeInfoHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyOne.taskThreeInfoParagraphOne"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskThreeInfoParagraphTwo"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskThreeInfoParagraphThree"
+                },
+                {
+                    "type": "images",
+                    "list": [
+                        {
+                            "src": "image_4.png",
+                            "alt": "storyOne.taskThreeImageAlt"
+                        },
+                        {
+                            "src": "plan_1.png",
+                            "alt": "storyOne.taskThreePlanAlt"
+                        }
+                    ]
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskThreeInfoParagraphFour"
+                }
+            ],
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.5603922, 50.7332189]
+                    },
+                    "properties": {}
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [
+                                [16.5607668, 50.7330612],
+                                [16.5604626, 50.7328301],
+                                [16.5599354, 50.7325136],
+                                [16.5582796, 50.7324152],
+                                [16.558435, 50.7328686],
+                                [16.5593947, 50.7334633],
+                                [16.5600165, 50.7333649],
+                                [16.5603815, 50.7332408],
+                                [16.5607668, 50.7330612]
+                            ]
+                        ]
+                    },
+                    "properties": {}
+                }
+            ],
+            "view": {
+                "center": [16.5599242, 50.733073],
+                "zoom": 17,
+                "duration": 1000
+            },
+            "task": {
+                "question": "storyOne.taskThreeQuestion",
+                "incorrectMessage": "storyOne.taskThreeIncorrectMessage",
+                "tip": "storyOne.taskThreeTip",
+                "answers": ["5", "pięć", "piec", "Piec", "Pięć", "Five", "five"]
+            },
+            "position": [16.5603922, 50.7332189],
+            "accuracy": 20
+        },
+        {
+            "title": "storyOne.taskFourInfo",
+            "bgImage": {
+                "src": "image_6.png"
+            },
+            "header": "storyOne.taskFourInfoHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "image",
+                    "src": "photo_4.png",
+                    "alt": "storyOne.taskFourImageAlt"
+                },
+                {
+                    "type": "subheader",
+                    "text": "storyOne.taskFourSubheader"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskFourParagraphOne"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskFourParagraphTwo"
+                },
+                {
+                    "type": "images",
+                    "list": [
+                        {
+                            "src": "photo_3.png",
+                            "alt": "storyOne.taskFourPhotoAlt"
+                        },
+                        {
+                            "src": "photo_5.png",
+                            "alt": "storyOne.taskFourPhotoAlt"
+                        },
+                        {
+                            "src": "photo_6.png",
+                            "alt": "storyOne.taskFourPhotoAlt"
+                        }
+                    ]
+                }
+            ],
+            "task": {
+                "question": "storyOne.taskFourQuestion",
+                "answers": [
+                    "Jan Nepomucen",
+                    "św. Jan Nepomucen",
+                    "św Jan Nepomucen",
+                    "św. Nepomucen",
+                    "św Nepomucen"
+                ],
+                "incorrectMessage": "storyOne.taskFourIncorrectMessage",
+                "tip": "storyOne.taskFourTip"
+            },
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.5613247, 50.7333619]
+                    },
+                    "properties": {}
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [
+                                [16.5613954, 50.7334371],
+                                [16.5616315, 50.7334937],
+                                [16.561619, 50.7335197],
+                                [16.5617446, 50.7335504],
+                                [16.5618023, 50.7334537],
+                                [16.56171, 50.733432],
+                                [16.5617149, 50.7334236],
+                                [16.5614417, 50.7333579],
+                                [16.5613954, 50.7334371]
+                            ]
+                        ]
+                    },
+                    "properties": {}
+                }
+            ],
+            "view": {
+                "center": [16.5615568, 50.7334326],
+                "zoom": 19,
+                "duration": 1000
+            },
+            "position": [16.5613247, 50.7333619],
+            "accuracy": 20
+        },
+        {
+            "title": "storyOne.taskFiveInfo",
+            "bgImage": {
+                "src": "image_7.png",
+                "alt": "taskFiveImageAlt"
+            },
+            "header": "storyOne.taskFiveInfoHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyOne.taskFiveParagraphOne"
+                },
+                {
+                    "type": "image",
+                    "src": "photo_7.png",
+                    "alt": "storyOne.taskFiveImageAlt"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskFiveParagraphTwo"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskFiveParagraphThree"
+                },
+                {
+                    "type": "link",
+                    "label": "storyOne.taskFiveUrlLabel",
+                    "url": "https://www.geocaching.com/geocache/GC81QT0"
+                }
+            ],
+            "task": {
+                "question": "storyOne.taskFiveQuestion",
+                "answers": ["sierp", "kos", "Sierp", "Kos", "scythe", "Scythe"],
+                "incorrectMessage": "storyOne.taskFiveIncorrectMessage",
+                "tip": "storyOne.taskFiveTip"
+            },
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.5612898, 50.7334259]
+                    },
+                    "properties": {}
+                }
+            ],
+            "view": {
+                "center": [16.5612898, 50.7334259],
+                "zoom": 19,
+                "duration": 1000
+            },
+            "position": [16.5612898, 50.7334259],
+            "accuracy": 20
+        },
+        {
+            "title": "storyOne.taskSixInfo",
+            "bgImage": {
+                "src": "image_8.png"
+            },
+            "header": "storyOne.taskSixInfoHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyOne.taskSixParagraphOne"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.taskSixParagraphTwo"
+                }
+            ],
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [
+                                [16.5639745, 50.7349918],
+                                [16.5639581, 50.7350357],
+                                [16.5641344, 50.7350725],
+                                [16.5641545, 50.7350303],
+                                [16.5639745, 50.7349918]
+                            ]
+                        ]
+                    },
+                    "properties": {}
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [16.5640576, 50.735032]
+                    },
+                    "properties": {}
+                }
+            ],
+            "view": {
+                "center": [16.5640576, 50.735032],
+                "zoom": 18,
+                "duration": 1000
+            },
+            "task": {
+                "question": "storyOne.taskSixQuestion",
+                "answers": [37, "37", "trzydzieści siedem", "Trzydzieści siedem"],
+                "incorrectMessage": "storyOne.taskSixIncorrectMessage",
+                "tip": "storyOne.taskSixTip"
+            },
+            "position": [16.5640576, 50.735032],
+            "accuracy": 20
+        },
+        {
+            "title": "storyOne.outro",
+            "bgImage": {
+                "src": "image_1.png"
+            },
+            "header": "storyOne.outroHeader",
+            "spacer": {},
+            "content": [
+                {
+                    "type": "p",
+                    "text": "storyOne.outroParagraphOne"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.outroParagraphTwo"
+                },
+                {
+                    "type": "email",
+                    "email": "kontakt@wies20.pl"
+                },
+                {
+                    "type": "p",
+                    "text": "storyOne.outroParagraphThree"
+                },
+                {
+                    "type": "link",
+                    "label": "Wieś 2.0 Laboratorium Innowacji Wiejskich",
+                    "url": "https://wies20.pl"
+                },
+                {
+                    "type": "link",
+                    "label": "Sołectwo Piskorzów",
+                    "url": "https://www.episkorzow.pl"
+                }
+            ],
+            "view": {
+                "center": [16.5671435, 50.7377331],
+                "zoom": 12,
+                "duration": 1000
+            },
+            "feature": {
+                "defaultFeature": true
+            }
+        }
+    ]
+}

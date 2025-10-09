@@ -1,0 +1,19 @@
+{
+    "collection": [
+        {
+            "id": "storyOne",
+            "title": "storyOneTitle",
+            "author": "storyOneAuthor",
+            "description": "storyOneDescription",
+            "imagePath": "/stories/storyOne/tile.png"
+        },
+        {
+            "id": "storyTwo",
+            "title": "storyTwoTitle",
+            "author": "storyTwoAuthor",
+            "description": "storyTwoDescription",
+            "imagePath": "/stories/storyTwo/tile.png",
+            "disabled": true
+        }
+    ]
+}
